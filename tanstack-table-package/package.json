@@ -1,0 +1,61 @@
+{
+  "name": "reusable-advanced-table",
+  "version": "1.3.0",
+  "description": "A comprehensive, reusable advanced table component built on TanStack Table with extensive features and theming",
+  "main": "dist/index.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "type-check": "tsc --noEmit",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [
+    "react",
+    "table",
+    "tanstack-table",
+    "data-grid",
+    "virtualized",
+    "sorting",
+    "filtering",
+    "pagination",
+    "typescript"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0"
+  },
+  "dependencies": {
+    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.13.12",
+    "@types/node": "^24.1.0",
+    "next-themes": "^0.4.6",
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^16.0.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "rollup": "^4.28.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
+    "typescript": "^5.8.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/tanstack-table-features"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/tanstack-table-features/issues"
+  },
+  "homepage": "https://github.com/your-org/tanstack-table-features#readme"
+}
