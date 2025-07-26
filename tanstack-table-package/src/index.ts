@@ -14,7 +14,14 @@ export { PresetSelector } from './components/PresetSelector';
 export * from './components/cells';
 
 // Column utilities
-export { createColumns } from './components/column-definitions';
+export {
+  createUtilityColumns,
+  createTextColumn,
+  createNumberColumn,
+  createCurrencyColumn,
+  createDateColumn,
+  createSelectColumn
+} from './components/column-definitions';
 
 // Hooks
 export { useTablePerformance, useDebounce } from './utils/performance';

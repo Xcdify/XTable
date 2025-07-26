@@ -7,7 +7,7 @@ export { DragDropArea } from './components/drag-drop-area';
 export { ThemeSelector } from './components/theme-selector';
 export { PresetSelector } from './components/PresetSelector';
 export * from './components/cells';
-export { createColumns } from './components/column-definitions';
+export { createUtilityColumns, createTextColumn, createNumberColumn, createCurrencyColumn, createDateColumn, createSelectColumn } from './components/column-definitions';
 export { useTablePerformance, useDebounce } from './utils/performance';
 export { useTableTheme } from './hooks/useTableTheme';
 export { useKeyboardNavigation } from './hooks/useKeyboardNavigation';

@@ -6869,9 +6869,9 @@ function ReusableAdvancedTable({ data, columns: providedColumns, preset, feature
             });
         }
     }, [sorting, columnFilters, rowSelection, columnVisibility, columnPinning, grouping, expanded, globalFilter]); // Remove onStateChange from dependencies
-    return (jsxRuntime.jsxs("div", { className: `flex flex-col gap-6 w-full ${className}`, children: [jsxRuntime.jsxs("div", { className: "flex flex-wrap gap-4 items-start", children: [showPresetSelector && (jsxRuntime.jsxs("div", { className: "flex-1 min-w-64", children: [jsxRuntime.jsx("label", { className: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2", children: "Table Preset" }), jsxRuntime.jsx(PresetSelector, { currentPreset: currentPreset, onPresetChange: handlePresetChange })] })), showThemeSelector && (jsxRuntime.jsx("div", { className: "flex-1 min-w-48", children: jsxRuntime.jsx(ThemeSelector, { variant: themeVariant, colorScheme: colorScheme, onVariantChange: setThemeVariant, onColorSchemeChange: setColorScheme }) }))] }), allowFeatureToggling && (jsxRuntime.jsx(TableControls, { enabled: enabled, onToggleFeature: toggleFeature, table: table, globalFilter: globalFilter, onGlobalFilterChange: setGlobalFilter, onDebouncedGlobalFilterChange: debouncedSetGlobalFilter, rowSelection: rowSelection, theme: themeOptions })), enabled.grouping && (jsxRuntime.jsx(DragDropArea, { groupedColumns: grouping, onGroupChange: handleGroupChange, onRemoveGroup: handleRemoveGroup, allColumns: table.getAllColumns() })), enabled.virtualization ? (jsxRuntime.jsx(VirtualizedTableView, { table: table, features: enabled, height: virtualization.height || 400, rowHeight: virtualization.rowHeight || 35, overscan: virtualization.overscan || 5, theme: themeOptions })) : (jsxRuntime.jsx(EnhancedTableView, { table: table, features: enabled, theme: themeOptions })), enabled.pagination && (jsxRuntime.jsxs("div", { className: "flex items-center justify-between", children: [jsxRuntime.jsxs("div", { className: "flex items-center gap-2", children: [jsxRuntime.jsx("button", { className: "border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800", onClick: () => table.setPageIndex(0), disabled: !table.getCanPreviousPage(), children: '<<' }), jsxRuntime.jsx("button", { className: "border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800", onClick: () => table.previousPage(), disabled: !table.getCanPreviousPage(), children: '<' }), jsxRuntime.jsx("button", { className: "border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800", onClick: () => table.nextPage(), disabled: !table.getCanNextPage(), children: '>' }), jsxRuntime.jsx("button", { className: "border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800", onClick: () => table.setPageIndex(table.getPageCount() - 1), disabled: !table.getCanNextPage(), children: '>>' })] }), jsxRuntime.jsxs("div", { className: "flex items-center gap-2", children: [jsxRuntime.jsxs("span", { className: "text-sm", children: ["Page ", table.getState().pagination.pageIndex + 1, " of", ' ', table.getPageCount()] }), jsxRuntime.jsx("select", { value: table.getState().pagination.pageSize, onChange: e => {
-                                    table.setPageSize(Number(e.target.value));
-                                }, className: "border rounded px-2 py-1 text-sm", children: [10, 20, 30, 40, 50].map(pageSize => (jsxRuntime.jsxs("option", { value: pageSize, children: ["Show ", pageSize] }, pageSize))) })] }), jsxRuntime.jsxs("div", { className: "text-sm text-gray-600 dark:text-gray-400", children: ["Showing ", table.getRowModel().rows.length, " of", ' ', table.getFilteredRowModel().rows.length, " results"] })] }))] }));
+    return (jsxRuntime.jsxs("div", { className: `w-full space-y-6 ${className}`, children: [(showPresetSelector || showThemeSelector) && (jsxRuntime.jsx("div", { className: "bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700", children: jsxRuntime.jsxs("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [showPresetSelector && (jsxRuntime.jsxs("div", { children: [jsxRuntime.jsx("label", { className: "block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2", children: "Table Preset" }), jsxRuntime.jsx(PresetSelector, { currentPreset: currentPreset, onPresetChange: handlePresetChange })] })), showThemeSelector && (jsxRuntime.jsx("div", { children: jsxRuntime.jsx(ThemeSelector, { variant: themeVariant, colorScheme: colorScheme, onVariantChange: setThemeVariant, onColorSchemeChange: setColorScheme }) }))] }) })), allowFeatureToggling && (jsxRuntime.jsx("div", { className: "bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4", children: jsxRuntime.jsx(TableControls, { enabled: enabled, onToggleFeature: toggleFeature, table: table, globalFilter: globalFilter, onGlobalFilterChange: setGlobalFilter, onDebouncedGlobalFilterChange: debouncedSetGlobalFilter, rowSelection: rowSelection, theme: themeOptions }) })), enabled.grouping && (jsxRuntime.jsx("div", { className: "bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4", children: jsxRuntime.jsx(DragDropArea, { groupedColumns: grouping, onGroupChange: handleGroupChange, onRemoveGroup: handleRemoveGroup, allColumns: table.getAllColumns() }) })), jsxRuntime.jsxs("div", { className: "bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden", children: [jsxRuntime.jsx("div", { className: "overflow-hidden", children: enabled.virtualization ? (jsxRuntime.jsx(VirtualizedTableView, { table: table, features: enabled, height: virtualization.height || 400, rowHeight: virtualization.rowHeight || 35, overscan: virtualization.overscan || 5, theme: themeOptions })) : (jsxRuntime.jsx(EnhancedTableView, { table: table, features: enabled, theme: themeOptions })) }), enabled.pagination && (jsxRuntime.jsx("div", { className: "border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3", children: jsxRuntime.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4", children: [jsxRuntime.jsxs("div", { className: "flex items-center gap-2", children: [jsxRuntime.jsx("button", { className: "border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800", onClick: () => table.setPageIndex(0), disabled: !table.getCanPreviousPage(), children: '<<' }), jsxRuntime.jsx("button", { className: "border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800", onClick: () => table.previousPage(), disabled: !table.getCanPreviousPage(), children: '<' }), jsxRuntime.jsx("button", { className: "border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800", onClick: () => table.nextPage(), disabled: !table.getCanNextPage(), children: '>' }), jsxRuntime.jsx("button", { className: "border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800", onClick: () => table.setPageIndex(table.getPageCount() - 1), disabled: !table.getCanNextPage(), children: '>>' })] }), jsxRuntime.jsxs("div", { className: "flex flex-col sm:flex-row sm:items-center gap-4", children: [jsxRuntime.jsxs("div", { className: "flex items-center gap-2", children: [jsxRuntime.jsxs("span", { className: "text-sm text-gray-700 dark:text-gray-300", children: ["Page ", table.getState().pagination.pageIndex + 1, " of", ' ', table.getPageCount()] }), jsxRuntime.jsx("select", { value: table.getState().pagination.pageSize, onChange: e => {
+                                                        table.setPageSize(Number(e.target.value));
+                                                    }, className: "border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100", children: [10, 20, 30, 40, 50].map(pageSize => (jsxRuntime.jsxs("option", { value: pageSize, children: ["Show ", pageSize] }, pageSize))) })] }), jsxRuntime.jsxs("div", { className: "text-sm text-gray-600 dark:text-gray-400", children: ["Showing ", table.getRowModel().rows.length, " of", ' ', table.getFilteredRowModel().rows.length, " results"] })] })] }) }))] })] }));
 }
 
 const EditableCellComponent = ({ initialValue, depth, onUpdate }) => {
@@ -7213,7 +7213,11 @@ const EditableCurrencyCell = ({ initialValue, depth, onUpdate, onKeyDown }) => {
     return (jsxRuntime.jsx("div", { style: { paddingLeft: `${depth * 20}px` }, children: isEditing ? (jsxRuntime.jsx("input", { ref: inputRef, type: "text", value: value, onChange: (e) => setValue(e.target.value), onBlur: handleSave, onKeyDown: handleKeyDown, placeholder: "Enter amount", className: "w-full px-1 py-0.5 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500" })) : (jsxRuntime.jsx("span", { onClick: () => setIsEditing(true), onKeyDown: handleKeyDown, className: "cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-800 px-1 py-0.5 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 block", tabIndex: 0, role: "button", "aria-label": `Edit ${displayValue}`, children: displayValue })) }));
 };
 
-const createColumns = (features, onDataUpdate) => [
+/**
+ * Creates utility columns for row selection and expansion.
+ * These are generic and can be used with any data structure.
+ */
+const createUtilityColumns = (features) => [
     // Row selection column
     ...(features.rowSelection ? [{
             id: 'select',
@@ -7237,293 +7241,122 @@ const createColumns = (features, onDataUpdate) => [
                 className: 'px-2 py-1 text-xs border rounded'
             }, row.getIsExpanded() ? '▼' : '▶')) : null),
         }] : []),
-    // Main data columns
-    {
-        accessorKey: "firstName",
-        header: "First Name",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            row.depth;
-            return features.inlineEditing
-                ? React.createElement(EditableTextCell, {
-                    initialValue: value,
-                    depth: 0, // Remove depth padding for structured table
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'firstName', newValue);
-                    }
-                })
-                : React.createElement('span', {}, value);
-        },
-    },
-    {
-        accessorKey: "lastName",
-        header: "Last Name",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableTextCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'lastName', newValue);
-                    }
-                })
-                : React.createElement('span', {}, value);
-        },
-    },
-    {
-        accessorKey: "age",
-        header: "Age",
-        footer: (info) => info.column.id,
-        aggregationFn: 'mean',
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableNumberCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'age', newValue);
-                    }
-                })
-                : React.createElement('span', {}, value);
-        },
-    },
-    {
-        accessorKey: "visits",
-        header: "Visits",
-        footer: (info) => info.column.id,
-        aggregationFn: 'sum',
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableNumberCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'visits', newValue);
-                    }
-                })
-                : React.createElement('span', {}, value);
-        },
-    },
-    {
-        accessorKey: "status",
-        header: "Status",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            row.depth;
-            const statusOptions = ['relationship', 'complicated', 'single'];
-            const getStatusStyles = (status) => {
-                switch (status) {
-                    case 'relationship':
-                        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-                    case 'complicated':
-                        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-                    case 'single':
-                        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-                    default:
-                        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
-                }
-            };
-            return features.inlineEditing
-                ? React.createElement(EditableSelectCell, {
-                    initialValue: value,
-                    depth: 0,
-                    options: statusOptions,
-                    getOptionStyles: getStatusStyles,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'status', newValue);
-                    }
-                })
-                : React.createElement(StatusCell, {
-                    value: value,
-                    depth: 0
-                });
-        },
-    },
-    {
-        accessorKey: "progress",
-        header: "Profile Progress",
-        footer: (info) => info.column.id,
-        aggregationFn: 'mean',
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableNumberCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'progress', newValue);
-                    }
-                })
-                : React.createElement(ProgressCell, {
-                    value: value,
-                    depth: 0
-                });
-        },
-    },
-    {
-        accessorKey: "department",
-        header: "Department",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            row.depth;
-            const departmentOptions = ['Sales', 'Marketing', 'Engineering', 'HR', 'Finance'];
-            const getDepartmentStyles = (dept) => {
-                switch (dept) {
-                    case 'Sales':
-                        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-                    case 'Marketing':
-                        return 'bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200';
-                    case 'Engineering':
-                        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-                    case 'HR':
-                        return 'bg-pink-100 text-pink-800 dark:bg-pink-900 dark:text-pink-200';
-                    case 'Finance':
-                        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-                    default:
-                        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
-                }
-            };
-            return features.inlineEditing
-                ? React.createElement(EditableSelectCell, {
-                    initialValue: value,
-                    depth: 0,
-                    options: departmentOptions,
-                    getOptionStyles: getDepartmentStyles,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'department', newValue);
-                    }
-                })
-                : React.createElement(DepartmentCell, {
-                    value: value,
-                    depth: 0
-                });
-        },
-    },
-    {
-        accessorKey: "region",
-        header: "Region",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            row.depth;
-            const regionOptions = ['North', 'South', 'East', 'West'];
-            const getRegionStyles = (region) => {
-                switch (region) {
-                    case 'North':
-                        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-                    case 'South':
-                        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
-                    case 'East':
-                        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-                    case 'West':
-                        return 'bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200';
-                    default:
-                        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
-                }
-            };
-            return features.inlineEditing
-                ? React.createElement(EditableSelectCell, {
-                    initialValue: value,
-                    depth: 0,
-                    options: regionOptions,
-                    getOptionStyles: getRegionStyles,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'region', newValue);
-                    }
-                })
-                : React.createElement(RegionCell, {
-                    value: value,
-                    depth: 0
-                });
-        },
-    },
-    {
-        accessorKey: "salary",
-        header: "Salary",
-        footer: (info) => info.column.id,
-        aggregationFn: 'mean',
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableCurrencyCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'salary', newValue);
-                    }
-                })
-                : React.createElement('span', {}, `$${(value)?.toLocaleString() || 'N/A'}`);
-        },
-    },
-    {
-        accessorKey: "performance",
-        header: "Performance",
-        footer: (info) => info.column.id,
-        enableGrouping: true,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            row.depth;
-            const performanceOptions = ['Excellent', 'Good', 'Average', 'Poor'];
-            const getPerformanceStyles = (performance) => {
-                switch (performance) {
-                    case 'Excellent':
-                        return 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200';
-                    case 'Good':
-                        return 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200';
-                    case 'Average':
-                        return 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-200';
-                    case 'Poor':
-                        return 'bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200';
-                    default:
-                        return 'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200';
-                }
-            };
-            return features.inlineEditing
-                ? React.createElement(EditableSelectCell, {
-                    initialValue: value,
-                    depth: 0,
-                    options: performanceOptions,
-                    getOptionStyles: getPerformanceStyles,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'performance', newValue);
-                    }
-                })
-                : React.createElement('span', {
-                    className: `px-2 py-1 rounded text-xs ${getPerformanceStyles(value)}`
-                }, value);
-        },
-    },
-    {
-        accessorKey: "joinDate",
-        header: "Join Date",
-        footer: (info) => info.column.id,
-        cell: ({ getValue, row }) => {
-            const value = getValue();
-            return features.inlineEditing
-                ? React.createElement(EditableDateCell, {
-                    initialValue: value,
-                    depth: 0,
-                    onUpdate: (newValue) => {
-                        onDataUpdate?.(row.index, 'joinDate', newValue);
-                    }
-                })
-                : React.createElement('span', {}, value ? new Date(value).toLocaleDateString() : 'N/A');
-        },
-    },
 ];
+/**
+ * Utility functions for creating common column types.
+ * These are generic helpers that can be used with any data structure.
+ */
+/**
+ * Creates a basic text column with optional inline editing
+ */
+const createTextColumn = (accessorKey, header, options = {}) => ({
+    accessorKey: accessorKey,
+    header,
+    footer: (info) => info.column.id,
+    enableGrouping: options.enableGrouping,
+    cell: ({ getValue, row }) => {
+        const value = getValue();
+        return options.enableEditing
+            ? React.createElement(EditableTextCell, {
+                initialValue: value,
+                depth: 0,
+                onUpdate: (newValue) => {
+                    options.onUpdate?.(row.index, accessorKey, newValue);
+                }
+            })
+            : React.createElement('span', {}, value);
+    },
+});
+/**
+ * Creates a number column with optional inline editing
+ */
+const createNumberColumn = (accessorKey, header, options = {}) => ({
+    accessorKey: accessorKey,
+    header,
+    footer: (info) => info.column.id,
+    enableGrouping: options.enableGrouping,
+    aggregationFn: options.aggregationFn,
+    cell: ({ getValue, row }) => {
+        const value = getValue();
+        return options.enableEditing
+            ? React.createElement(EditableNumberCell, {
+                initialValue: value,
+                depth: 0,
+                onUpdate: (newValue) => {
+                    options.onUpdate?.(row.index, accessorKey, newValue);
+                }
+            })
+            : React.createElement('span', {}, value);
+    },
+});
+/**
+ * Creates a currency column with optional inline editing
+ */
+const createCurrencyColumn = (accessorKey, header, options = {}) => ({
+    accessorKey: accessorKey,
+    header,
+    footer: (info) => info.column.id,
+    enableGrouping: options.enableGrouping,
+    aggregationFn: options.aggregationFn,
+    cell: ({ getValue, row }) => {
+        const value = getValue();
+        return options.enableEditing
+            ? React.createElement(EditableCurrencyCell, {
+                initialValue: value,
+                depth: 0,
+                onUpdate: (newValue) => {
+                    options.onUpdate?.(row.index, accessorKey, newValue);
+                }
+            })
+            : React.createElement('span', {}, `$${(value)?.toLocaleString() || 'N/A'}`);
+    },
+});
+/**
+ * Creates a date column with optional inline editing
+ */
+const createDateColumn = (accessorKey, header, options = {}) => ({
+    accessorKey: accessorKey,
+    header,
+    footer: (info) => info.column.id,
+    enableGrouping: options.enableGrouping,
+    cell: ({ getValue, row }) => {
+        const value = getValue();
+        return options.enableEditing
+            ? React.createElement(EditableDateCell, {
+                initialValue: value,
+                depth: 0,
+                onUpdate: (newValue) => {
+                    options.onUpdate?.(row.index, accessorKey, newValue);
+                }
+            })
+            : React.createElement('span', {}, value ? new Date(value).toLocaleDateString() : 'N/A');
+    },
+});
+/**
+ * Creates a select column with predefined options
+ */
+const createSelectColumn = (accessorKey, header, options) => ({
+    accessorKey: accessorKey,
+    header,
+    footer: (info) => info.column.id,
+    enableGrouping: options.enableGrouping,
+    cell: ({ getValue, row }) => {
+        const value = getValue();
+        return options.enableEditing
+            ? React.createElement(EditableSelectCell, {
+                initialValue: value,
+                depth: 0,
+                options: options.selectOptions,
+                getOptionStyles: options.getOptionStyles,
+                onUpdate: (newValue) => {
+                    options.onUpdate?.(row.index, accessorKey, newValue);
+                }
+            })
+            : React.createElement('span', {
+                className: options.getOptionStyles ? `px-2 py-1 rounded text-xs ${options.getOptionStyles(value)}` : ''
+            }, value);
+    },
+});
 
 const TABLE_PRESETS = {
     'basic-table': {
@@ -8025,7 +7858,9 @@ function useAdvancedTable({ data, columns: customColumns, initialFeatures = {}, 
     const [globalFilter, setGlobalFilter] = React.useState(initialState.globalFilter || '');
     // Performance optimizations - use enhanced configuration data and performance settings
     const finalData = enhancedConfig.data;
-    const finalColumns = enhancedConfig.columns || createColumns(enabled);
+    // Use provided columns or create utility columns (row selection, expansion) if needed
+    const utilityColumns = createUtilityColumns(enabled);
+    const finalColumns = enhancedConfig.columns || utilityColumns;
     const finalPerformanceConfig = enhancedConfig.performance;
     const { memoizedData, memoizedColumns, computedState } = useTablePerformance(finalData, finalColumns, enabled, finalPerformanceConfig);
     // Use memoized columns for better performance
@@ -8818,6 +8653,12 @@ function createCellRenderer(type, value, options, format, className, style) {
     }
 }
 /**
+ * Helper to create multiple columns at once
+ */
+function createColumns(configs) {
+    return configs.map(config => createColumnDef(config));
+}
+/**
  * Predefined column configurations for common data types
  */
 const ColumnPresets = {
@@ -8947,6 +8788,12 @@ exports.ValidationUtils = ValidationUtils;
 exports.VirtualizedTableView = VirtualizedTableView;
 exports.createColumnDef = createColumnDef;
 exports.createColumns = createColumns;
+exports.createCurrencyColumn = createCurrencyColumn;
+exports.createDateColumn = createDateColumn;
+exports.createNumberColumn = createNumberColumn;
+exports.createSelectColumn = createSelectColumn;
+exports.createTextColumn = createTextColumn;
+exports.createUtilityColumns = createUtilityColumns;
 exports.defaultData = defaultData;
 exports.getPreset = getPreset$1;
 exports.inferColumnTypes = inferColumnTypes;

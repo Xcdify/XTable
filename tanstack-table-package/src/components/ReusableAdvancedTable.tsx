@@ -385,137 +385,157 @@ export function ReusableAdvancedTable<T = any>({
   }, [sorting, columnFilters, rowSelection, columnVisibility, columnPinning, grouping, expanded, globalFilter]); // Remove onStateChange from dependencies
 
   return (
-    <div className={`flex flex-col gap-6 w-full ${className}`}>
+    <div className={`w-full space-y-6 ${className}`}>
       {/* Controls Header */}
-      <div className="flex flex-wrap gap-4 items-start">
-        {/* Preset Selector */}
-        {showPresetSelector && (
-          <div className="flex-1 min-w-64">
-            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-              Table Preset
-            </label>
-            <PresetSelector
-              currentPreset={currentPreset}
-              onPresetChange={handlePresetChange}
-            />
+      {(showPresetSelector || showThemeSelector) && (
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Preset Selector */}
+            {showPresetSelector && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                  Table Preset
+                </label>
+                <PresetSelector
+                  currentPreset={currentPreset}
+                  onPresetChange={handlePresetChange}
+                />
+              </div>
+            )}
+
+            {/* Theme Selector */}
+            {showThemeSelector && (
+              <div>
+                <ThemeSelector
+                  variant={themeVariant}
+                  colorScheme={colorScheme}
+                  onVariantChange={setThemeVariant}
+                  onColorSchemeChange={setColorScheme}
+                />
+              </div>
+            )}
           </div>
-        )}
-        
-        {/* Theme Selector */}
-        {showThemeSelector && (
-          <div className="flex-1 min-w-48">
-            <ThemeSelector
-              variant={themeVariant}
-              colorScheme={colorScheme}
-              onVariantChange={setThemeVariant}
-              onColorSchemeChange={setColorScheme}
-            />
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Table Controls */}
       {allowFeatureToggling && (
-        <TableControls
-          enabled={enabled}
-          onToggleFeature={toggleFeature}
-          table={table}
-          globalFilter={globalFilter}
-          onGlobalFilterChange={setGlobalFilter}
-          onDebouncedGlobalFilterChange={debouncedSetGlobalFilter}
-          rowSelection={rowSelection}
-          theme={themeOptions}
-        />
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <TableControls
+            enabled={enabled}
+            onToggleFeature={toggleFeature}
+            table={table}
+            globalFilter={globalFilter}
+            onGlobalFilterChange={setGlobalFilter}
+            onDebouncedGlobalFilterChange={debouncedSetGlobalFilter}
+            rowSelection={rowSelection}
+            theme={themeOptions}
+          />
+        </div>
       )}
 
       {/* Grouping Controls */}
       {enabled.grouping && (
-        <DragDropArea<T>
-          groupedColumns={grouping}
-          onGroupChange={handleGroupChange}
-          onRemoveGroup={handleRemoveGroup}
-          allColumns={table.getAllColumns()}
-        />
-      )}
-
-      {/* Table View */}
-      {enabled.virtualization ? (
-        <VirtualizedTableView 
-          table={table} 
-          features={enabled}
-          height={virtualization.height || 400}
-          rowHeight={virtualization.rowHeight || 35}
-          overscan={virtualization.overscan || 5}
-          theme={themeOptions}
-        />
-      ) : (
-        <EnhancedTableView 
-          table={table} 
-          features={enabled} 
-          theme={themeOptions} 
-        />
-      )}
-
-      {/* Pagination */}
-      {enabled.pagination && (
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <button
-              className="border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => table.setPageIndex(0)}
-              disabled={!table.getCanPreviousPage()}
-            >
-              {'<<'}
-            </button>
-            <button
-              className="border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => table.previousPage()}
-              disabled={!table.getCanPreviousPage()}
-            >
-              {'<'}
-            </button>
-            <button
-              className="border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => table.nextPage()}
-              disabled={!table.getCanNextPage()}
-            >
-              {'>'}
-            </button>
-            <button
-              className="border rounded px-3 py-1 disabled:opacity-50 hover:bg-gray-50 dark:hover:bg-gray-800"
-              onClick={() => table.setPageIndex(table.getPageCount() - 1)}
-              disabled={!table.getCanNextPage()}
-            >
-              {'>>'}
-            </button>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <span className="text-sm">
-              Page {table.getState().pagination.pageIndex + 1} of{' '}
-              {table.getPageCount()}
-            </span>
-            <select
-              value={table.getState().pagination.pageSize}
-              onChange={e => {
-                table.setPageSize(Number(e.target.value))
-              }}
-              className="border rounded px-2 py-1 text-sm"
-            >
-              {[10, 20, 30, 40, 50].map(pageSize => (
-                <option key={pageSize} value={pageSize}>
-                  Show {pageSize}
-                </option>
-              ))}
-            </select>
-          </div>
-          
-          <div className="text-sm text-gray-600 dark:text-gray-400">
-            Showing {table.getRowModel().rows.length} of{' '}
-            {table.getFilteredRowModel().rows.length} results
-          </div>
+        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-4">
+          <DragDropArea<T>
+            groupedColumns={grouping}
+            onGroupChange={handleGroupChange}
+            onRemoveGroup={handleRemoveGroup}
+            allColumns={table.getAllColumns()}
+          />
         </div>
       )}
+
+      {/* Main Table Container */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+        {/* Table View */}
+        <div className="overflow-hidden">
+          {enabled.virtualization ? (
+            <VirtualizedTableView
+              table={table}
+              features={enabled}
+              height={virtualization.height || 400}
+              rowHeight={virtualization.rowHeight || 35}
+              overscan={virtualization.overscan || 5}
+              theme={themeOptions}
+            />
+          ) : (
+            <EnhancedTableView
+              table={table}
+              features={enabled}
+              theme={themeOptions}
+            />
+          )}
+        </div>
+
+        {/* Pagination Footer */}
+        {enabled.pagination && (
+          <div className="border-t border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800 px-4 py-3">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+              {/* Navigation Buttons */}
+              <div className="flex items-center gap-2">
+                <button
+                  className="border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800"
+                  onClick={() => table.setPageIndex(0)}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  {'<<'}
+                </button>
+                <button
+                  className="border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800"
+                  onClick={() => table.previousPage()}
+                  disabled={!table.getCanPreviousPage()}
+                >
+                  {'<'}
+                </button>
+                <button
+                  className="border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800"
+                  onClick={() => table.nextPage()}
+                  disabled={!table.getCanNextPage()}
+                >
+                  {'>'}
+                </button>
+                <button
+                  className="border border-gray-300 dark:border-gray-600 rounded px-3 py-1 text-sm disabled:opacity-50 hover:bg-gray-100 dark:hover:bg-gray-700 bg-white dark:bg-gray-800"
+                  onClick={() => table.setPageIndex(table.getPageCount() - 1)}
+                  disabled={!table.getCanNextPage()}
+                >
+                  {'>>'}
+                </button>
+              </div>
+
+              {/* Page Info and Size Selector */}
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm text-gray-700 dark:text-gray-300">
+                    Page {table.getState().pagination.pageIndex + 1} of{' '}
+                    {table.getPageCount()}
+                  </span>
+                  <select
+                    value={table.getState().pagination.pageSize}
+                    onChange={e => {
+                      table.setPageSize(Number(e.target.value))
+                    }}
+                    className="border border-gray-300 dark:border-gray-600 rounded px-2 py-1 text-sm bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100"
+                  >
+                    {[10, 20, 30, 40, 50].map(pageSize => (
+                      <option key={pageSize} value={pageSize}>
+                        Show {pageSize}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                {/* Results Info */}
+                <div className="text-sm text-gray-600 dark:text-gray-400">
+                  Showing {table.getRowModel().rows.length} of{' '}
+                  {table.getFilteredRowModel().rows.length} results
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

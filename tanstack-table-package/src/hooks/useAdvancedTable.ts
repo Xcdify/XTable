@@ -17,7 +17,7 @@ import {
   ColumnDef,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import { FeatureKey, createColumns } from "../components/table-columns";
+import { FeatureKey, createUtilityColumns } from "../components/table-columns";
 import { getPresetFeatures } from "../config/presets";
 import { TableMemoization, useTablePerformance, PerformanceConfig, useDebounce } from "../utils/performance";
 import { AdvancedTableConfig, PerformanceOptions } from "../types/table-config";
@@ -101,7 +101,9 @@ export function useAdvancedTable<T = any>({
 
   // Performance optimizations - use enhanced configuration data and performance settings
   const finalData = enhancedConfig.data;
-  const finalColumns = enhancedConfig.columns || createColumns(enabled);
+  // Use provided columns or create utility columns (row selection, expansion) if needed
+  const utilityColumns = createUtilityColumns<T>(enabled);
+  const finalColumns = enhancedConfig.columns || utilityColumns;
   const finalPerformanceConfig = enhancedConfig.performance;
 
   const { memoizedData, memoizedColumns, computedState } = useTablePerformance(
