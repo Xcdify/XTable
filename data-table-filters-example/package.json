@@ -10,11 +10,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@data-table/filters": "file:../data-table-filters-lib",
     "@tanstack/react-query": "^5.62.12",
     "@tanstack/react-query-devtools": "^5.62.12",
     "@tanstack/react-table": "^8.20.6",
     "@tanstack/react-virtual": "^3.11.2",
+    "@xcdify/xtable": "../data-table-filters-lib/xcdify-xtable-1.0.0.tgz",
+    "@xcdify/xtable": "../data-table-filters-lib/xcdify-xtable-1.0.0.tgz",
     "autoprefixer": "^10.4.21",
     "babel-plugin-react-compiler": "^19.1.0-rc.2",
     "geist": "^1.3.1",

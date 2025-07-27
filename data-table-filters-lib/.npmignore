@@ -1,12 +1,53 @@
+# Source files (only dist/ should be published)
 src/
+
+# Development and build configuration
 node_modules/
 .rollup.cache
 rollup.config.js
 tsconfig.json
 tailwind.config.js
 postcss.config.js
+.eslintrc*
+.prettierrc*
+
+# Version control
 .git/
 .gitignore
+
+# Logs and cache
 *.log
-.eslintrc*
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.eslintcache
+
+# Test files
+**/*.test.*
+**/*.spec.*
+__tests__/
+test/
+tests/
+coverage/
+
+# IDE and OS files
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Lock files
+package-lock.json
+yarn.lock
+bun.lock
+
+# Documentation (except README)
 *.md
+!README.md
+
+# Environment files
+.env
+.env.test

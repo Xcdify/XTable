@@ -2,7 +2,7 @@
 
 import type {
   DataTableFilterField,
-} from "@data-table/filters";
+} from "@xcdify/xtable";
 import { type ColumnSchema } from "./schema";
 
 // instead of filterFields, maybe just 'fields' with a filterDisabled prop?

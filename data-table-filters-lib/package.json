@@ -1,20 +1,31 @@
 {
-  "name": "@data-table/filters",
+  "name": "@xcdify/xtable",
   "version": "1.0.0",
   "description": "A comprehensive React data table component with advanced filtering capabilities",
   "type": "module",
-  "main": "src/index.ts",
-  "module": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    }
+  },
   "files": [
-    "src"
+    "dist",
+    "README.md",
+    "LICENSE"
   ],
   "scripts": {
-    "build": "echo 'Source-only package - no build required'",
-    "dev": "echo 'Source-only package - no dev build'",
-    "prepare": "echo 'Source-only package - no prepare step'",
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run build",
     "lint": "eslint src --ext .ts,.tsx",
-    "test": "jest"
+    "test": "jest",
+    "clean": "rimraf dist"
   },
   "keywords": [
     "react",
@@ -22,13 +33,28 @@
     "filtering",
     "tanstack-table",
     "components",
-    "ui"
+    "ui",
+    "table",
+    "typescript",
+    "tailwindcss",
+    "radix-ui"
   ],
-  "author": "Data Table Filters Team",
+  "author": "Xcdify - update what was done by Data Table Filters Team",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xcdify/xtable.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xcdify/xtable/issues"
+  },
+  "homepage": "https://github.com/xcdify/xtable#readme",
   "peerDependencies": {
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0"
+    "react-dom": ">=18.0.0",
+    "@tanstack/react-query": "^5.0.0",
+    "@tanstack/react-table": "^8.0.0",
+    "tailwindcss": "^3.0.0"
   },
   "dependencies": {
     "@date-fns/utc": "^2.1.0",
@@ -50,8 +76,6 @@
     "@radix-ui/react-tabs": "^1.1.2",
     "@radix-ui/react-tooltip": "^1.1.6",
     "@radix-ui/react-visually-hidden": "^1.1.1",
-    "@tanstack/react-query": "^5.62.12",
-    "@tanstack/react-table": "^8.20.6",
     "@tanstack/react-virtual": "^3.11.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -63,7 +87,6 @@
     "react-day-picker": "^8.10.1",
     "sonner": "^1.7.2",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7",
     "vaul": "^1.1.2",
     "zod": "^3.24.1"
   },
@@ -71,6 +94,7 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
+    "@tanstack/react-query-devtools": "^5.62.12",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
@@ -79,11 +103,13 @@
     "eslint-plugin-react": "^7.34.1",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.38",
+    "rimraf": "^5.0.0",
     "rollup": "^4.14.0",
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
     "tailwindcss": "^3.4.17",
+    "tailwindcss-animate": "^1.0.7",
     "tslib": "^2.6.2",
     "typescript": "^5.4.5"
   }

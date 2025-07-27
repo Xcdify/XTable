@@ -1,8 +1,8 @@
 "use client";
 
-import { Button } from "@data-table/filters";
-import { useLocalStorage } from "@data-table/filters";
-import { cn } from "@data-table/filters";
+import { Button } from "@xcdify/xtable";
+import { useLocalStorage } from "@xcdify/xtable";
+import { cn } from "@xcdify/xtable";
 import { useQuery } from "@tanstack/react-query";
 import { Edit3, Group } from "lucide-react";
 import * as React from "react";

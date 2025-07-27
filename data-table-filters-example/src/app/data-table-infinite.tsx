@@ -7,20 +7,20 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@data-table/filters";
-import { DataTableFilterControls } from "@data-table/filters";
-import { GroupedRowHeader } from "@data-table/filters";
-import { DataTableProvider } from "@data-table/filters";
-import { DataTableResetButton } from "@data-table/filters";
-import { DataTableToolbar } from "@data-table/filters";
+} from "@xcdify/xtable";
+import { DataTableFilterControls } from "@xcdify/xtable";
+import { GroupedRowHeader } from "@xcdify/xtable";
+import { DataTableProvider } from "@xcdify/xtable";
+import { DataTableResetButton } from "@xcdify/xtable";
+import { DataTableToolbar } from "@xcdify/xtable";
 import type {
   DataTableFilterField,
-} from "@data-table/filters";
-import { Button } from "@data-table/filters";
-import { useLocalStorage } from "@data-table/filters";
-import { useTableKeyboardNavigation } from "@data-table/filters";
-import { KeyboardNavigableCell } from "@data-table/filters";
-import { cn } from "@data-table/filters";
+} from "@xcdify/xtable";
+import { Button } from "@xcdify/xtable";
+import { useLocalStorage } from "@xcdify/xtable";
+import { useTableKeyboardNavigation } from "@xcdify/xtable";
+import { KeyboardNavigableCell } from "@xcdify/xtable";
+import { cn } from "@xcdify/xtable";
 import { DragDropGrouping } from "./drag-drop-grouping";
 import {
   type FetchNextPageOptions,

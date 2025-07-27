@@ -1,6 +1,6 @@
 "use client";
 
-import { EditableTextCell, EditableEmailCell, EditablePhoneCell } from "@data-table/filters";
+import { EditableTextCell, EditableEmailCell, EditablePhoneCell } from "@xcdify/xtable";
 import type { ColumnDef } from "@tanstack/react-table";
 import * as React from "react";
 import { DraggableColumnHeader } from "./draggable-column-header";
