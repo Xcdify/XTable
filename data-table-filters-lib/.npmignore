@@ -1,0 +1,12 @@
+src/
+node_modules/
+.rollup.cache
+rollup.config.js
+tsconfig.json
+tailwind.config.js
+postcss.config.js
+.git/
+.gitignore
+*.log
+.eslintrc*
+*.md
