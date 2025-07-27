@@ -4,7 +4,6 @@
     "": {
       "name": "data-table-filters-example",
       "dependencies": {
-        "@xcdify/xtable": "../data-table-filters-lib/xcdify-xtable-1.0.0.tgz",
         "@tanstack/react-query": "^5.62.12",
         "@tanstack/react-query-devtools": "^5.62.12",
         "@tanstack/react-table": "^8.20.6",
