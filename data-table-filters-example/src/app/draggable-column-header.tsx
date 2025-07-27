@@ -2,8 +2,8 @@
 
 import type { Column } from "@tanstack/react-table";
 import { ChevronDown, ChevronUp, GripVertical } from "lucide-react";
-import { Button, type ButtonProps } from "@data-table/filters";
-import { cn } from "@data-table/filters";
+import { Button, type ButtonProps } from "@xcdify/xtable";
+import { cn } from "@xcdify/xtable";
 import * as React from "react";
 
 interface DraggableColumnHeaderProps<TData, TValue> extends ButtonProps {

@@ -1,7 +1,7 @@
 "use client";
 
-import { Button } from "@data-table/filters";
-import { cn } from "@data-table/filters";
+import { Button } from "@xcdify/xtable";
+import { cn } from "@xcdify/xtable";
 import { X, GripVertical } from "lucide-react";
 import * as React from "react";
 import type { Table } from "@tanstack/react-table";
